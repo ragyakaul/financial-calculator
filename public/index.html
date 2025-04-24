@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <title>MortgageCalculator</title>
+        
+    </head>
+    <body>
+        <h1>Mortgage Calulator</h1>
+        <form id="userForm">
+            <label for="loanOnHouse">Loan on house:</label><br>
+            <input type="text" id="loanOnHouse" name="loanOnHouse"><br>
+            <br>
+            <label for="currentAnnualHomeInterestRate">Current Annual Home Interest Rate:</label><br>
+            <input type="text" id="currentAnnualHomeInterestRate" name="currentAnnualHomeInterestRate"><br>
+            <br>
+            <label for="yearsLeftOnLoan">Years left on loan: </label><br>
+            <input type="text" id="yearsLeftOnLoan" name="monthlyLoanPayment"><br>
+            <br>
+            <button id="sendToServer">Submit</button>
+          
+        </form>
+        <h3>Results</h3>
+        <label for="monthlyPrincipal">Monthly Principal: </label><br>
+        <input type="text" id="monthlyPrincipal" readonly><br>
+        <br>
+        <label for="yearlyPrincipal">Yearly Principal: </label><br>
+        <input type="text" id="yearlyPrincipal" readonly><br>
+        <br>
+        <label for="monthlyInterest">Monthly Interest: </label><br>
+        <input type="text" id="monthlyInterest" readonly><br>
+        <br>
+        <label for="yearlyInterest">Yearly Interest: </label><br>
+        <input type="text" id="yearlyInterest" readonly><br>
+        <br>
+    </body>
+    <script src="index.js"></script>
+</html>
+

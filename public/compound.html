@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>CompoundInterestCalculator</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link rel="stylesheet" type="text/css" href="compound.css">
+    </head>
+    <body>
+        <h1>Compound Interest Calculator</h1>
+        <div class="container">
+            <form id="userForm">
+                <label for="initialPortfolioValue">Initial Portfolio Value:</label><br>
+                <input type="text" id="initialPortfolioValue" name="initialPortfolioValue" value="1500"><br>
+                <br>
+                <label for="annualBaseContribution">Annual Base Contribution:</label><br>
+                <input type="text" id="annualBaseContribution" name="annualBaseContribution" value="80000"><br>
+                <br>
+                <label for="inflationRate">Inflation Rate:</label><br>
+                <input type="text" id="inflationRate" name="inflationRate" value="3.0"><br>
+                <br>
+                <label for="growthRate">Growth Rate:</label><br>
+                <input type="text" id="growthRate" name="growthRate" value="9.0"><br>
+                <br>
+                <label for="yearsCompounding">Years Compounding:</label><br>
+                <input type="text" id="yearsCompounding" name="yearsCompounding" value="75"><br>
+                <br>
+                <label for="targetFIREValue">Target FIRE Value:</label><br>
+                <input type="text" id="targetFIREValue" name="targetFIREValue" value="1000000"><br>
+                <br>
+                <label for="annualWithdrawalPercentage">Annual Withdrawal %:</label><br>
+                <input type="text" id="annualWithdrawalPercentage" name="annualWithdrawalPercentage" value="4"><br>
+                <br>
+                <button id="sendToServer">Submit</button>
+            </form>
+            <div id="chartContainer" style="max-width: 800px; margin: auto;">
+                <canvas id="myChart" width="200" height="200"></canvas>
+            </div>
+        </div>
+    </body>
+    <script src="compound.js"></script>
+</html>
