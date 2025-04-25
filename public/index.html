@@ -4,36 +4,34 @@
 <html>
     <head>
         <title>MortgageCalculator</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         
     </head>
     <body>
         <h1>Mortgage Calulator</h1>
         <form id="userForm">
             <label for="loanOnHouse">Loan on house:</label><br>
-            <input type="text" id="loanOnHouse" name="loanOnHouse"><br>
+            <input type="text" id="loanOnHouse" name="loanOnHouse" value="244000"><br>
+            <br>
+            <label for="mandatoryMonthlyPayment">Mandatory Monthly Payment: </label><br>
+            <input type="text" id="mandatoryMonthlyPayment" name="mandatoryMonthlyPayment" value="2189"><br>
+            <br>
+            <label for="optionalMonthlyPayment">Optional Monthly Payment: </label><br>
+            <input type="text" id="optionalMonthlyPayment" name="optionalMonthlyPayment" value="200"><br>
             <br>
             <label for="currentAnnualHomeInterestRate">Current Annual Home Interest Rate:</label><br>
-            <input type="text" id="currentAnnualHomeInterestRate" name="currentAnnualHomeInterestRate"><br>
+            <input type="text" id="currentAnnualHomeInterestRate" name="currentAnnualHomeInterestRate" value="6.3"><br>
             <br>
             <label for="yearsLeftOnLoan">Years left on loan: </label><br>
-            <input type="text" id="yearsLeftOnLoan" name="monthlyLoanPayment"><br>
+            <input type="text" id="yearsLeftOnLoan" name="yearsLeftOnLoan" value="14"><br>
             <br>
             <button id="sendToServer">Submit</button>
           
         </form>
         <h3>Results</h3>
-        <label for="monthlyPrincipal">Monthly Principal: </label><br>
-        <input type="text" id="monthlyPrincipal" readonly><br>
-        <br>
-        <label for="yearlyPrincipal">Yearly Principal: </label><br>
-        <input type="text" id="yearlyPrincipal" readonly><br>
-        <br>
-        <label for="monthlyInterest">Monthly Interest: </label><br>
-        <input type="text" id="monthlyInterest" readonly><br>
-        <br>
-        <label for="yearlyInterest">Yearly Interest: </label><br>
-        <input type="text" id="yearlyInterest" readonly><br>
-        <br>
+        <div id="chartContainer" style="max-width: 800px; margin: auto;">
+            <canvas id="mortgageChart" width="600" height="400"></canvas>
+        </div>
     </body>
     <script src="index.js"></script>
 </html>

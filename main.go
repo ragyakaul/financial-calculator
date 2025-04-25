@@ -8,9 +8,11 @@ import (
 )
 
 type MortgageData struct {
-	Loan            float64 `json:"loan"`
-	InterestRate    float64 `json:"annualInterestRate"`
-	YearsLeftOnLoan float64 `json:"yearsLeftOnLoan"`
+	Loan                    float64 `json:"loan"`
+	MandatoryMonthlyPayment float64 `json:"mandatoryMonthlyPayment"`
+	OptionalMonthlyPayment  float64 `json:"optionalMonthlyPayment"`
+	InterestRate            float64 `json:"annualInterestRate"`
+	YearsLeftOnLoan         int     `json:"yearsLeftOnLoan"`
 }
 
 type CompoundingData struct {
@@ -43,15 +45,18 @@ func mortgageFormHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println("Received data LOAN: ", data.Loan, " INTEREST RATE: ", data.InterestRate, " YEARS LEFT: ", data.YearsLeftOnLoan)
-	monthlyPrincipal, yearlyPrincipal, monthlyInterest, yearlyInterest, err := mortgageCalculator(data.Loan, data.InterestRate, data.YearsLeftOnLoan)
+	interestValues, principalValues, err := mortgageCalculator(data.Loan, data.MandatoryMonthlyPayment, data.OptionalMonthlyPayment, data.InterestRate, data.YearsLeftOnLoan)
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 	}
-	fmt.Println(monthlyPrincipal, yearlyPrincipal, monthlyInterest, yearlyInterest)
 
-	jsonString := fmt.Sprintf(`{"monthlyPrincipal": %f, "yearlyPrincipal": %f, "monthlyInterest": %f, "yearlyInterest": %f}`, monthlyPrincipal, yearlyPrincipal, monthlyInterest, yearlyInterest)
-	w.Write([]byte(jsonString))
+	// Marshal interestValues and principalValues (Go -> JSON) and send response
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(map[string]interface{}{
+		"interestValues":  interestValues,
+		"principalValues": principalValues,
+	})
 }
 
 func compoundInterestHandler(w http.ResponseWriter, r *http.Request) {
